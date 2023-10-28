@@ -4,8 +4,9 @@
     <style>
         #container {
             position: relative;
-            width: 360px;
+            width: 300px;
             height: 640px;
+            overflow: hidden;
         }
 
         #image1 {
@@ -16,6 +17,9 @@
 
         #image2 {
             display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: auto;
             cursor: pointer;
@@ -54,9 +58,6 @@
             } else {
                 initializeAd();
             }
-        } else {
-            // Log an error message if MRAID is not supported
-            console.error("MRAID is not supported.");
         }
     </script>
 </body>
