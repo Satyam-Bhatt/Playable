@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #container {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        #image1 {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        #image2 {
+            display: none;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="image1" src="D4.png" alt="Click me to reveal the link">
+        <img id="image2" src="Icon.png" alt="Click me to open the link">
+        <a id="link" href="https://play.google.com/store/apps/details?id=com.lucidlabs.bloom" target="_blank" style="display: none;">Link</a>
+    </div>
+
+    <script src="mraid.js"></script>
+    <script>
+        // Wait for MRAID to become ready
+        function initializeAd() {
+            const image1 = document.getElementById("image1");
+            const image2 = document.getElementById("image2");
+            const link = document.getElementById("link");
+
+            image1.addEventListener("click", function () {
+                image1.style.display = "none";
+                image2.style.display = "block";
+            });
+
+            image2.addEventListener("click", function () {
+                mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
+            });
+        }
+
+        // Check for MRAID support and initialize the ad
+        if (typeof mraid !== "undefined") {
+            if (mraid.getState() === "loading") {
+                mraid.addEventListener("ready", initializeAd);
+            } else {
+                initializeAd();
+            }
+        } else {
+            // Log an error message if MRAID is not supported
+            console.error("MRAID is not supported.");
+        }
+    </script>
+</body>
+</html>
