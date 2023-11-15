@@ -49,6 +49,10 @@
                 document.querySelector('.image-container img').addEventListener('click', function() {
                     mraid.open('https://play.google.com/store/apps/details?id=com.lucidlabs.bloom');
                 });
+				
+				document.querySelector('.image-container img').addEventListener('click', function() {
+                mraid.open('https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755');
+            });
             }
         });
     </script>

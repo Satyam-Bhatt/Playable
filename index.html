@@ -40,22 +40,42 @@
     </div>
 
     <!-- Unity Ads MRAID initialization -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.mraid) {
-                mraid.useCustomClose(true);
-                
-                // Open the provided link when the image is clicked
-                document.querySelector('.image-container img').addEventListener('click', function() {
-                    mraid.open('https://play.google.com/store/apps/details?id=com.lucidlabs.bloom');
-                });
-				
-				document.querySelector('.image-container img').addEventListener('click', function() {
-                mraid.open('https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755');
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.mraid) {
+            mraid.useCustomClose(true);
+            
+            // Open the appropriate app store link when the image is clicked
+            document.querySelector('.image-container img').addEventListener('click', function() {
+                // Determine the platform and open the corresponding link
+                var platform = getMobileOperatingSystem();
+                switch (platform) {
+                    case "Android":
+                        mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
+                        break;
+                    case "iOS":
+                        mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
+                        break;
+                    default:
+                        // Default behavior (for other platforms)
+                        break;
+                }
             });
-            }
-        });
-    </script>
+        }
+    });
+
+    // Function to detect the mobile operating system
+    function getMobileOperatingSystem() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(userAgent)) {
+            return "Android";
+        }
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
+        }
+        return "Other";
+    }
+</script>
 
 </body>
 </html>
