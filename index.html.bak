@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-		body{
-			margin: 0;
-			padding: 0;
-		}
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         /* Container styling */
         .image-container {
             width: 100vw;
             height: 100vh; 
             overflow: hidden; 
-			display: flex;
-			justify-content: center;
-			align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Make the image stretch to fill the entire size of the container */
@@ -23,59 +24,92 @@
             width: auto;
             height: 100%;
             object-fit: fill;
-			display: block;
-			margin: 0 auto;
+            display: block;
+            margin: 0 auto;
         }
     </style>
     <!-- Replace 'https://new-source.com/mraid.js' with the actual URL of your mraid.js file -->
     <script src="mraid.js"></script>
-    <title>Responsive Image</title>
+    <title>Image Gallery</title>
 </head>
 <body>
 
     <!-- Container for the image -->
     <div class="image-container">
-        <!-- Replace 'your-image.jpg' with the actual path to your image -->
-        <img src="D4.png" alt="Description of the image">
+        <!-- First image -->
+        <img id="image1" src="D4.png" alt="Description of the first image">
+        <!-- Second image (hidden initially) -->
+        <img id="image2" src="Download Screen.png" alt="Description of the second image" style="display: none;">
+        <!-- Third image (hidden initially) -->
+        <img id="image3" src="Icon.png" alt="Description of the third image" style="display: none;">
     </div>
 
     <!-- Unity Ads MRAID initialization -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if (window.mraid) {
-            mraid.useCustomClose(true);
-            
-            // Open the appropriate app store link when the image is clicked
-            document.querySelector('.image-container img').addEventListener('click', function() {
-                // Determine the platform and open the corresponding link
-                var platform = getMobileOperatingSystem();
-                switch (platform) {
-                    case "Android":
-                        mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
-                        break;
-                    case "iOS":
-                        mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
-                        break;
-                    default:
-                        // Default behavior (for other platforms)
-                        break;
-                }
-            });
-        }
-    });
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.mraid) {
+                mraid.useCustomClose(true);
 
-    // Function to detect the mobile operating system
-    function getMobileOperatingSystem() {
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        if (/android/i.test(userAgent)) {
-            return "Android";
+                // Variables to track the current image
+                var currentImage = 1;
+                var totalImages = 3;
+
+                // Function to show the next image
+                function showNextImage() {
+                    // Hide the current image
+                    document.getElementById('image' + currentImage).style.display = 'none';
+
+                    // Increment the image counter
+                    currentImage++;
+
+                    // If it exceeds the total number of images, reset to the first image
+                    if (currentImage > totalImages) {
+                        currentImage = 1;
+                    }
+
+                    // Show the next image
+                    document.getElementById('image' + currentImage).style.display = 'block';
+                }
+
+                // Open the appropriate app store link or show the next image when clicked
+                document.querySelector('.image-container img').addEventListener('click', function() {
+                    if (currentImage === 2) {
+                        // Show the third image when the second image is clicked
+                        showNextImage();
+                    } else if (currentImage === 3) {
+                        // Open the appropriate app store link based on the platform when the third image is clicked
+                        var platform = getMobileOperatingSystem();
+                        switch (platform) {
+                            case "Android":
+                                mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
+                                break;
+                            case "iOS":
+                                mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
+                                break;
+                            default:
+                                // Default behavior (for other platforms)
+                                break;
+                        }
+                    } else {
+                        // Show the next image for other clicks
+                        showNextImage();
+                    }
+                });
+            }
+        });
+
+        // Function to detect the mobile operating system
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+            return "Other";
         }
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            return "iOS";
-        }
-        return "Other";
-    }
-</script>
+    </script>
 
 </body>
 </html>
