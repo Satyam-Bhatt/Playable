@@ -13,8 +13,8 @@
 
         /* Make the image stretch to fill the entire size of the container */
         .image-container img {
-            width: inherit;
-            height: inherit;
+            width: 100%;
+            height: 100%;
             object-fit: fill;
 			display: block;
 			margin: 0 auto;
