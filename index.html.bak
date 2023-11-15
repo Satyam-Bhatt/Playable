@@ -6,8 +6,8 @@
     <style>
         /* Make the image stretch to fill the entire size of the device */
         img {
-            max-width: 100%;
-            height: auto;
+            width: auto;
+            height: 100%;
             display: block;
             margin: 0 auto; /* Center the image */
         }
