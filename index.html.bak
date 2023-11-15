@@ -12,12 +12,23 @@
             margin: 0 auto; /* Center the image */
         }
     </style>
+    <script src="https://cdn.unityads.unity3d.com/ats/mobile/mraid.js"></script>
     <title>Responsive Image</title>
 </head>
 <body>
 
     <!-- Replace 'your-image.jpg' with the actual path to your image -->
-    <img src="D4.png" alt="Description of the image">
+    <img src="your-image.jpg" alt="Description of the image">
+
+    <!-- Unity Ads MRAID initialization -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.mraid) {
+                mraid.useCustomClose(true);
+                // Additional Unity Ads MRAID functionality goes here
+            }
+        });
+    </script>
 
 </body>
 </html>
