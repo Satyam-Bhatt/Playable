@@ -28,7 +28,7 @@
             margin: 0 auto;
         }
     </style>
-    <!-- Include the MRAID script -->
+    <!-- Replace 'https://new-source.com/mraid.js' with the actual URL of your mraid.js file -->
     <script src="mraid.js"></script>
     <title>Image Gallery</title>
 </head>
@@ -46,64 +46,53 @@
 
     <!-- Unity Ads MRAID initialization -->
     <script>
-        // Check if MRAID is available
-        if (window.mraid) {
-            // Variables to track the current image
-            var currentImage = 1;
-            var totalImages = 3;
+        // Variables to track the current image
+        var currentImage = 1;
+        var totalImages = 3;
 
-            // Open the appropriate app store link or show the next image when clicked
-            function changeImage() {
-                // Hide the current image
-                document.getElementById('image' + currentImage).style.display = 'none';
+        // Open the appropriate app store link or show the next image when clicked
+        function changeImage() {
+            // Hide the current image
+            document.getElementById('image' + currentImage).style.display = 'none';
 
-                // Increment the image counter
-                currentImage++;
+            // Increment the image counter
+            currentImage++;
 
-                // If it exceeds the total number of images, reset to the first image
-                if (currentImage > totalImages) {
-                    currentImage = 1;
-                }
-
-                // Show the next image
-                document.getElementById('image' + currentImage).style.display = 'block';
+            // If it exceeds the total number of images, reset to the first image
+            if (currentImage > totalImages) {
+                currentImage = 1;
             }
 
-            // Open the appropriate app store link when the third image is clicked
-            function openAppStore() {
-                var platform = getMobileOperatingSystem();
-                switch (platform) {
-                    case "Android":
-                        mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
-                        break;
-                    case "iOS":
-                        mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
-                        break;
-                    default:
-                        // Default behavior (for other platforms)
-                        break;
-                }
-            }
+            // Show the next image
+            document.getElementById('image' + currentImage).style.display = 'block';
+        }
 
-            // Function to detect the mobile operating system
-            function getMobileOperatingSystem() {
-                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-                if (/android/i.test(userAgent)) {
-                    return "Android";
-                }
-                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                    return "iOS";
-                }
-                return "Other";
+        // Open the appropriate app store link when the third image is clicked
+        function openAppStore() {
+            var platform = getMobileOperatingSystem();
+            switch (platform) {
+                case "Android":
+                    mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
+                    break;
+                case "iOS":
+                    mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
+                    break;
+                default:
+                    // Default behavior (for other platforms)
+                    break;
             }
+        }
 
-            // Add event listener for MRAID state changes
-            mraid.addEventListener('stateChange', function (state) {
-                console.log('MRAID state changed to: ' + state);
-                // Handle state change as needed
-            });
-        } else {
-            console.error('MRAID not available. Make sure the MRAID script is included.');
+        // Function to detect the mobile operating system
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+            return "Other";
         }
     </script>
 
