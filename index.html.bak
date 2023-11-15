@@ -12,7 +12,7 @@
             margin: 0 auto; /* Center the image */
         }
     </style>
-    <script src="https://cdn.unityads.unity3d.com/ats/mobile/mraid.js"></script>
+    <script src="mraid.js"></script>
     <title>Responsive Image</title>
 </head>
 <body>
