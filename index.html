@@ -37,63 +37,51 @@
     <!-- Container for the image -->
     <div class="image-container">
         <!-- First image -->
-        <img id="image1" src="D4.png" alt="Description of the first image">
+        <img id="image1" src="D4.png" alt="Description of the first image" onclick="changeImage()">
         <!-- Second image (hidden initially) -->
-        <img id="image2" src="Download Screen.png" alt="Description of the second image" style="display: none;">
+        <img id="image2" src="Download Screen.png" alt="Description of the second image" style="display: none;" onclick="changeImage()">
         <!-- Third image (hidden initially) -->
-        <img id="image3" src="Download Screen 2.png" alt="Description of the third image" style="display: none;">
+        <img id="image3" src="Download Screen 2.png" alt="Description of the third image" style="display: none;" onclick="openAppStore()">
     </div>
 
     <!-- Unity Ads MRAID initialization -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.mraid) {
-                mraid.useCustomClose(true);
+        // Variables to track the current image
+        var currentImage = 1;
+        var totalImages = 3;
 
-                // Variables to track the current image
-                var currentImage = 1;
-                var totalImages = 3;
+        // Open the appropriate app store link or show the next image when clicked
+        function changeImage() {
+            // Hide the current image
+            document.getElementById('image' + currentImage).style.display = 'none';
 
-                // Function to show the next image
-                function showNextImage() {
-                    // Hide the current image
-                    document.getElementById('image' + currentImage).style.display = 'none';
+            // Increment the image counter
+            currentImage++;
 
-                    // Increment the image counter
-                    currentImage++;
-
-                    // If it exceeds the total number of images, reset to the first image
-                    if (currentImage > totalImages) {
-                        currentImage = 1;
-                    }
-
-                    // Show the next image
-                    document.getElementById('image' + currentImage).style.display = 'block';
-                }
-
-                // Open the appropriate app store link or show the next image when clicked
-                document.querySelector('.image-container img').addEventListener('click', function() {
-                    if (currentImage === 3) {
-                        // Open the appropriate app store link based on the platform when the third image is clicked
-                        var platform = getMobileOperatingSystem();
-                        switch (platform) {
-                            case "Android":
-                                mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
-                                break;
-                            case "iOS":
-                                mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
-                                break;
-                            default:
-                                // Default behavior (for other platforms)
-                                break;
-                        }
-                    } else {
-                        // Show the next image for other clicks
-                        showNextImage();
-                    }
-                });
+            // If it exceeds the total number of images, reset to the first image
+            if (currentImage > totalImages) {
+                currentImage = 1;
             }
-        });
+
+            // Show the next image
+            document.getElementById('image' + currentImage).style.display = 'block';
+        }
+
+        // Open the appropriate app store link when the third image is clicked
+        function openAppStore() {
+            var platform = getMobileOperatingSystem();
+            switch (platform) {
+                case "Android":
+                    mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
+                    break;
+                case "iOS":
+                    mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
+                    break;
+                default:
+                    // Default behavior (for other platforms)
+                    break;
+            }
+        }
 
         // Function to detect the mobile operating system
         function getMobileOperatingSystem() {
