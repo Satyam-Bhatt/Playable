@@ -41,7 +41,7 @@
         <!-- Second image (hidden initially) -->
         <img id="image2" src="Download Screen.png" alt="Description of the second image" style="display: none;" onclick="changeImage()">
         <!-- Third image (hidden initially) -->
-        <img id="image3" src="Download Screen 2.png" alt="Description of the third image" style="display: none;" onclick="changeImage()">
+        <img id="image3" src="Download Screen 2.png" alt="Description of the third image" style="display: none;" onclick="openAppStore()">
     </div>
 
     <!-- Unity Ads MRAID initialization -->
@@ -52,34 +52,34 @@
 
         // Open the appropriate app store link or show the next image when clicked
         function changeImage() {
-            if (currentImage === 3) {
-                // Open the appropriate app store link based on the platform when the third image is clicked
-                var platform = getMobileOperatingSystem();
-                switch (platform) {
-                    case "Android":
-                        mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
-                        break;
-                    case "iOS":
-                        mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
-                        break;
-                    default:
-                        // Default behavior (for other platforms)
-                        break;
-                }
-            } else {
-                // Hide the current image
-                document.getElementById('image' + currentImage).style.display = 'none';
+            // Hide the current image
+            document.getElementById('image' + currentImage).style.display = 'none';
 
-                // Increment the image counter
-                currentImage++;
+            // Increment the image counter
+            currentImage++;
 
-                // If it exceeds the total number of images, reset to the first image
-                if (currentImage > totalImages) {
-                    currentImage = 1;
-                }
+            // If it exceeds the total number of images, reset to the first image
+            if (currentImage > totalImages) {
+                currentImage = 1;
+            }
 
-                // Show the next image
-                document.getElementById('image' + currentImage).style.display = 'block';
+            // Show the next image
+            document.getElementById('image' + currentImage).style.display = 'block';
+        }
+
+        // Open the appropriate app store link when the third image is clicked
+        function openAppStore() {
+            var platform = getMobileOperatingSystem();
+            switch (platform) {
+                case "Android":
+                    mraid.open("https://play.google.com/store/apps/details?id=com.lucidlabs.bloom");
+                    break;
+                case "iOS":
+                    mraid.open("https://apps.apple.com/us/app/bloom-a-puzzle-adventure/id1577359755");
+                    break;
+                default:
+                    // Default behavior (for other platforms)
+                    break;
             }
         }
 
