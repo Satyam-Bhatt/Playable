@@ -6,11 +6,8 @@
     <style>
         /* Container styling */
         .image-container {
-            width: 100vh;
+            width: 100vw;
             height: 100vh; /* 100% of the viewport height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden; /* Hide any overflowing content */
         }
 
@@ -18,7 +15,9 @@
         .image-container img {
             width: inherit;
             height: inherit;
-            object-fit: cover; /* Optional: Maintain aspect ratio and cover entire container */
+            object-fit: fill;
+			display: block;
+			margin: 0 auto;
         }
     </style>
     <!-- Replace 'https://new-source.com/mraid.js' with the actual URL of your mraid.js file -->
