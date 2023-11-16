@@ -27,6 +27,12 @@
             display: block;
             margin: 0 auto;
         }
+		
+		 /* Center the audio element */
+			.audio-container {
+            text-align: center;
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
     </style>
     <!-- Include the MRAID script -->
     <script src="mraid.js"></script>
@@ -35,10 +41,12 @@
 <body>
 
 	<!-- Background music -->
-<audio id="bgMusic" controls autoplay>
-    <source src="Music.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio>
+	 <div class="audio-container">	
+		<audio id="bgMusic" controls autoplay>
+		<source src="Music.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+		</audio>
+	</div>
 
     <!-- Container for the image -->
     <div class="image-container">
@@ -53,6 +61,8 @@
         <!-- Second image (hidden initially) -->
         <img id="image5" src="Level 3_IDLE(WebP).webp" alt="Description of the five image" style="display: none;" onclick="openAppStore()">
     </div>
+	
+
 
     <!-- Unity Ads MRAID initialization -->
     <script>
