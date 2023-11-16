@@ -34,12 +34,6 @@
 </head>
 <body>
 
-	<!-- Background music -->
-    <audio id="bgMusic" loop autoplay>
-        <source src="Music" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
     <!-- Container for the image -->
     <div class="image-container">
         <!-- First image -->
