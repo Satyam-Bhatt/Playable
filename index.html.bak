@@ -109,6 +109,12 @@
 				var ckd = document.getElementById('clickableArea');
 				ckd.onclick = null;
 				
+				if(currentImage == 4)
+				{
+					var cA = document.querySelector('.clickable-area');
+					cA.parentNode.removeChild(cA);
+				}
+				
 				setTimeout(changeLevel, 4500);
             }
 			
@@ -120,11 +126,7 @@
 				var ckd2 = document.getElementById('clickableArea');
 				ckd2.onclick = function(){changeImage()};
 				
-				if(currentImage == 4)
-				{
-					var cA = document.querySelector('.clickable-area');
-					cA.parentNode.removeChild(cA);
-				}
+				
 			}
 
             // Open the appropriate app store link when the third image is clicked
@@ -164,7 +166,7 @@
 
             // Set the clickable area size as a percentage of the image size
             var percentageSize = 10; // Adjust the percentage as needed
-            clickableArea.style.width = (window.innerWidth * percentageSize / 100) + 'px';
+            clickableArea.style.width = (window.innerWidth * percentageSize * 2 / 100) + 'px';
 			clickableArea.style.height = (window.innerHeight * percentageSize / 100) + 'px';
         }
 
