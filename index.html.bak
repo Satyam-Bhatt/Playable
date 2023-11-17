@@ -68,7 +68,7 @@
     <script>
 	
         // Check if MRAID is available
-        if (window.mraid) {
+        
             // Variables to track the current image
             var currentImage = 1;
             var totalImages = 5;
@@ -89,7 +89,7 @@
                 // Show the next image
                 document.getElementById('image' + currentImage).style.display = 'block';
 				
-				setTimeout(changeLevel(), 4000);
+				setTimeout(changeLevel, 4200);
             }
 			
 			function changeLevel(){
@@ -131,6 +131,8 @@
                 console.log('MRAID state changed to: ' + state);
                 // Handle state change as needed
             });
+		if (window.mraid) {
+		console.error('MRAID available. Make sure the MRAID script is included.');
         } else {
             console.error('MRAID not available. Make sure the MRAID script is included.');
         }
