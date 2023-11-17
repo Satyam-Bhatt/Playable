@@ -113,6 +113,19 @@
                         break;
                 }
             }
+			
+			        // Get a reference to the audio element
+        var bgMusic = document.getElementById('bgMusic');
+
+        // Stop the music when the user leaves the page
+        window.addEventListener('beforeunload', function () {
+            bgMusic.pause();
+        });
+
+        // If you want to stop the music when the user navigates within the same website, you can use the 'unload' event:
+        // window.addEventListener('unload', function () {
+        //     bgMusic.pause();
+        // });
 
             // Function to detect the mobile operating system
             function getMobileOperatingSystem() {
