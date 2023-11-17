@@ -68,7 +68,8 @@
     <script>
 	
         // Check if MRAID is available
-        
+        if (window.mraid) {
+			console.error('MRAID available. Make sure the MRAID script is included.');
             // Variables to track the current image
             var currentImage = 1;
             var totalImages = 5;
@@ -144,8 +145,7 @@
                 console.log('MRAID state changed to: ' + state);
                 // Handle state change as needed
             });
-		if (window.mraid) {
-		console.error('MRAID available. Make sure the MRAID script is included.');
+
         } else {
             console.error('MRAID not available. Make sure the MRAID script is included.');
         }
