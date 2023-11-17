@@ -38,6 +38,8 @@
             background-color: transparent;
             cursor: pointer;
 			border: 2px solid red;
+			width: 20%;
+			height: 20%;
         }
 		
 		 /* Center the audio element 
@@ -70,8 +72,6 @@
         <img id="image2" src="Level 1_VID(WebP).webp" alt="Description of the second image" style="display: none;">
         <!-- Third image (hidden initially) -->
         <img id="image3" src="Level 2_IDLE(WebP).webp" alt="Description of the third image" style="display: none;">
-		<!-- Clickable area -->
-		<div class="clickable-area" onclick="changeImage()"></div>
         <!-- Second image (hidden initially) -->
         <img id="image4" src="Level 2_VID(WebP).webp" alt="Description of the fourth image" style="display: none;">
         <!-- Second image (hidden initially) -->
@@ -106,6 +106,9 @@
                 // Show the next image
                 document.getElementById('image' + currentImage).style.display = 'block';
 				
+				var ckd = document.getElementById('clickableArea');
+				ckd.onclick = null;
+				
 				setTimeout(changeLevel, 4500);
             }
 			
@@ -113,6 +116,15 @@
 				document.getElementById('image' + currentImage).style.display = 'none';
 				currentImage++;
 				document.getElementById('image' + currentImage).style.display = 'block';
+				
+				var ckd2 = document.getElementById('clickableArea');
+				ckd2.onclick = function(){changeImage()};
+				
+				if(currentImage == 4)
+				{
+					var cA = document.querySelector('.clickable-area');
+					cA.parentNode.removeChild(cA);
+				}
 			}
 
             // Open the appropriate app store link when the third image is clicked
@@ -149,14 +161,11 @@
 			//Function to update clickable area size
 		    function updateClickableAreaSize() {
             var clickableArea = document.getElementById('clickableArea');
-            var currentImageResize = document.getElementById('image' + currentImage);
-			var imageWidth = currentImage.width;
-            var imageHeight = currentImage.height;
 
             // Set the clickable area size as a percentage of the image size
-            var percentageSize = 20; // Adjust the percentage as needed
-            clickableArea.style.width = (imageWidth * percentageSize / 100) + 'px';
-            clickableArea.style.height = (imageHeight * percentageSize / 100) + 'px';
+            var percentageSize = 10; // Adjust the percentage as needed
+            clickableArea.style.width = (window.innerWidth * percentageSize / 100) + 'px';
+			clickableArea.style.height = (window.innerHeight * percentageSize / 100) + 'px';
         }
 
         // Initial size update
