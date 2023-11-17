@@ -28,10 +28,10 @@
             margin: 0 auto;
         }
 		
-		 /* Center the audio element */
+		 /* Center the audio element 
 			.audio-container {
             text-align: center;
-            margin-top: 20px; /* Adjust the margin as needed */
+            margin-top: 20px;  Adjust the margin as needed */
         }
     </style>
     <!-- Include the MRAID script -->
@@ -42,7 +42,7 @@
 
 	<!-- Background music -->
 	 <div class="audio-container">	
-		<audio id="bgMusic" controls autoplay>
+		<audio id="bgMusic" autoplay loop>
 		<source src="Music.mp3" type="audio/mp3">
 		Your browser does not support the audio element.
 		</audio>
@@ -53,11 +53,11 @@
         <!-- First image -->
         <img id="image1" src="Level 1_IDLE(WebP).webp" alt="Description of the first image" onclick="changeImage()">
         <!-- Second image (hidden initially) -->
-        <img id="image2" src="Level 1_VID(WebP).webp" alt="Description of the second image" style="display: none;" onclick="changeImage()">
+        <img id="image2" src="Level 1_VID(WebP).webp" alt="Description of the second image" style="display: none;">
         <!-- Third image (hidden initially) -->
         <img id="image3" src="Level 2_IDLE(WebP).webp" alt="Description of the third image" style="display: none;" onclick="changeImage()">
         <!-- Second image (hidden initially) -->
-        <img id="image4" src="Level 2_VID(WebP).webp" alt="Description of the fourth image" style="display: none;" onclick="changeImage()">
+        <img id="image4" src="Level 2_VID(WebP).webp" alt="Description of the fourth image" style="display: none;">
         <!-- Second image (hidden initially) -->
         <img id="image5" src="Level 3_IDLE(WebP).webp" alt="Description of the five image" style="display: none;" onclick="openAppStore()">
     </div>
@@ -88,7 +88,15 @@
 
                 // Show the next image
                 document.getElementById('image' + currentImage).style.display = 'block';
+				
+				setTimeout(changeLevel(), 4000);
             }
+			
+			function changeLevel(){
+				document.getElementById('image' + currentImage).style.display = 'none';
+				currentImage++;
+				document.getElementById('image' + currentImage).style.display = 'block';
+			}
 
             // Open the appropriate app store link when the third image is clicked
             function openAppStore() {
