@@ -166,7 +166,7 @@
 
             // Set the clickable area size as a percentage of the image size
             var percentageSize = 10; // Adjust the percentage as needed
-            clickableArea.style.width = (window.innerWidth * percentageSize * 2 / 100) + 'px';
+            clickableArea.style.width = (window.innerWidth * percentageSize * 1.5 / 100) + 'px';
 			clickableArea.style.height = (window.innerHeight * percentageSize / 100) + 'px';
         }
 
