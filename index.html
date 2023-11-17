@@ -38,127 +38,7 @@
             background-color: transparent;
             cursor: pointer;
 			border: 2px solid red;
-			widht: 20%;
-			height: 20%;
-        }
-		
-		 /* Center the audio element 
-			.audio-container {
-            text-align: center;
-            margin-top: 20px;  Adjust the margin as needed */
-        }
-    </style>
-    <!-- Include the MRAID script -->
-    <script src="mraid.js"></script>
-    <title>Image Gallery</title>
-</head>
-<body>
-
-	<!-- Background music -->
-	 <div class="audio-container">	
-		<audio id="bgMusic" autoplay loop>
-		<source src="Music.mp3" type="audio/mp3">
-		Your browser does not support the audio element.
-		</audio>
-	</div>
-
-    <!-- Container for the image -->
-    <div class="image-container">
-        <!-- First image -->
-        <img id="image1" src="Level 1_IDLE(WebP).webp" alt="Description of the first image">
-		<!-- Clickable area -->
-        <div id="clickableArea" class="clickable-area" onclick="changeImage()"></div>
-        <!-- Second image (hidden initially) -->
-        <img id="image2" src="Level 1_VID(WebP).webp" alt="Description of the second image" style="display: none;">
-        <!-- Third image (hidden initially) -->
-        <img id="image3" src="Level 2_IDLE(WebP).webp" alt="Description of the third image" style="display: none;">
-        <!-- Second image (hidden initially) -->
-        <img id="image4" src="Level 2_VID(WebP).webp" alt="Description of the fourth image" style="display: none;">
-        <!-- Second image (hidden initially) -->
-        <img id="image5" src="Level 3_IDLE(WebP).webp" alt="Description of the five image" style="display: none;" onclick="openAppStore()">
-    </div>
-	
-
-
-    <!-- Unity Ads MRAID initialization -->
-    <script>
-	
-        // Check if MRAID is available
-        
-			console.error('MRAID available. Make sure the MRAID script is included.');
-            // Variables to track the current image
-            var currentImage = 1;
-            var totalImages = 5;
-
-            // Open the appropriate app store link or show the next image when clicked
-            function changeImage() {
-                // Hide the current image
-                document.getElementById('image' + currentImage).style.display = 'none';
-
-                // Increment the image counter
-                currentImage++;
-
-                // If it exceeds the total number of images, reset to the first image
-                if (currentImage > totalImages) {
-                    currentImage = 1;
-                }
-
-                // Show the next image
-                document.getElementById('image' + currentImage).style.display = 'block';
-				
-				var clickableAreaDisappear = document.getElementById('clickableArea');
-				clickableAreaDisappear.onclick = null;
-				
-				setTimeout(changeLevel, 4500);
-            }
-			
-			function changeLevel(){
-				document.getElementById('image' + currentImage).style.display = 'none';
-				currentImage++;
-				document.getElementById('image' + currentImage).style.display = 'block';
-				
-				var clickableAreaDisappear = document.getElementById('clickableArea');
-				<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Container styling */
-        .image-container {
-            width: 100vw;
-            height: 100vh; 
-            overflow: hidden; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-			position: relative;
-        }
-
-        /* Make the image stretch to fill the entire size of the container */
-        .image-container img {
-            width: auto;
-            height: 100%;
-            object-fit: fill;
-            display: block;
-            margin: 0 auto;
-        }
-		
-		/* Centered clickable area */
-        .clickable-area {
-            position: absolute;
-            top: 68%;
-            left: 50%;
-            transform: translate(-50%, -32%);
-            background-color: transparent;
-            cursor: pointer;
-			border: 2px solid red;
-			widht: 20%;
+			width: 20%;
 			height: 20%;
         }
 		
@@ -233,8 +113,6 @@
 				document.getElementById('image' + currentImage).style.display = 'none';
 				currentImage++;
 				document.getElementById('image' + currentImage).style.display = 'block';
-			}
-			
 			}
 
             // Open the appropriate app store link when the third image is clicked
@@ -270,13 +148,12 @@
 		
 			//Function to update clickable area size
 		    function updateClickableAreaSize() {
-			var clickableArea = document.getElementById('clickableArea');
+            var clickableArea = document.getElementById('clickableArea');
 
-			// Set the clickable area size as a percentage of the image size
-			var percentageSize = 10; // Adjust the percentage as needed
-			clickableArea.style.width = (window.innerWidth * percentageSize / 100) + 'px';
+            // Set the clickable area size as a percentage of the image size
+            var percentageSize = 20; // Adjust the percentage as needed
+            clickableArea.style.width = (window.innerWidth * percentageSize / 100) + 'px';
 			clickableArea.style.height = (window.innerHeight * percentageSize / 100) + 'px';
-
         }
 
         // Initial size update
