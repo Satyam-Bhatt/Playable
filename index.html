@@ -44,8 +44,8 @@
 		 /* Center the audio element 
 			.audio-container {
             text-align: center;
-            margin-top: 20px;  Adjust the margin as needed */
-        }
+            margin-top: 20px;  Adjust the margin as needed 
+        } */
     </style>
     <!-- Include the MRAID script -->
     <script src="mraid.js"></script>
@@ -129,8 +129,9 @@
 
             // Open the appropriate app store link when the third image is clicked
             function openAppStore() {
-				//var musicInGame = document.getElementById('bgMusic');
-				//musicInGame.pause();
+				var musicInGame = document.getElementById('bgMusic');
+				musicInGame.pause();
+                
                 var platform = getMobileOperatingSystem();
                 switch (platform) {
                     case "Android":
